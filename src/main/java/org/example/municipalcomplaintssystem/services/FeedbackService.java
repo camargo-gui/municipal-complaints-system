@@ -1,21 +1,19 @@
 package org.example.municipalcomplaintssystem.services;
 
-
-import org.example.municipalcomplaintssystem.db.entities.Usuario;
-import org.example.municipalcomplaintssystem.db.repositories.UsuarioRepository;
+import org.example.municipalcomplaintssystem.db.entities.Feedback;
+import org.example.municipalcomplaintssystem.db.repositories.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UsuarioService {
+public class FeedbackService {
 
     @Autowired
-    UsuarioRepository repository;
+    FeedbackRepository repository;
 
-    public List<Usuario> buscarTodos() {
+    public List<Feedback> buscarTodos() {
         return this.repository.findAll();
     }
-
 }

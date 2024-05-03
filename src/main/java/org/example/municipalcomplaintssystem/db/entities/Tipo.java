@@ -1,15 +1,13 @@
 package org.example.municipalcomplaintssystem.db.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Table(name = "tipo")
 @Entity
 public class Tipo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tip_id")
     private int id;
 
@@ -23,6 +21,14 @@ public class Tipo {
     public Tipo(int id, String nome){
         this.id = id;
         this.nome = nome;
+    }
+
+    public Tipo(int id){
+        this(id, "");
+    }
+
+    public Tipo(String nome){
+        this(0, nome);
     }
 
     public int getId() {

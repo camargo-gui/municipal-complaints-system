@@ -7,13 +7,14 @@ import jakarta.persistence.*;
 public class Feedback {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "fee_id")
     private int id;
 
     @Column(name = "fee_texto")
     private String texto;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "den_id")
     private Denuncia denuncia;
 

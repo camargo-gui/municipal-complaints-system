@@ -35,6 +35,10 @@ public class Usuario {
         this.nivel = s3;
     }
 
+    public Usuario(int id){
+        this(id, "", "", "", "");
+    }
+
     public int getId() {
         return id;
     }

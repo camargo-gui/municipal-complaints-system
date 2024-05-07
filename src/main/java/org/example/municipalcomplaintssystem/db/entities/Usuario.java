@@ -3,7 +3,7 @@ package org.example.municipalcomplaintssystem.db.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -21,13 +21,13 @@ public class Usuario {
     private String senha;
 
     @Column(name = "usu_nivel")
-    private String nivel;
+    private int nivel;
 
     public Usuario() {
-        this(0, "", "", "", "");
+        this(0, "", "", "", 0);
     }
 
-    public Usuario(int i, String s, String s1, String s2, String s3) {
+    public Usuario(int i, String s, String s1, String s2, int s3) {
         this.id = i;
         this.cpf = s;
         this.email = s1;
@@ -67,11 +67,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getNivel() {
+    public int getNivel() {
         return nivel;
     }
 
-    public void setNivel(String nivel) {
+    public void setNivel(int nivel) {
         this.nivel = nivel;
     }
 }

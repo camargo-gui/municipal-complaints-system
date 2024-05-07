@@ -18,4 +18,8 @@ public class UsuarioService {
         return this.repository.findAll();
     }
 
+    public Usuario buscarPorEmail(String email) {
+        return this.repository.findByEmail(email);
+    }
+
 }

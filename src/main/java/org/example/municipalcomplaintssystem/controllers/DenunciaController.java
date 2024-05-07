@@ -14,7 +14,7 @@ public class DenunciaController {
     @Autowired
     DenunciaService service;
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<Object> getAll() {
         return ResponseEntity.ok(service.buscarTodos());
     }

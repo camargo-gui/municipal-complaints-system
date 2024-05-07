@@ -17,7 +17,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        final String token = request.getHeader("Authorization");
+        final String token = request.getHeader("Authorization").split(" ")[1];
+        System.out.println(token);
         try {
             if(token == null){
                 throw new ServletException("Necessário autenticação");
@@ -27,7 +28,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             if(!isValid){
                 throw new ServletException("Acesso negado");
             }
-            String role = claims.get("role", String.class);
+            String role = claims.get("nivel", String.class);
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                     claims.getSubject(), null, Collections.singletonList(authority));

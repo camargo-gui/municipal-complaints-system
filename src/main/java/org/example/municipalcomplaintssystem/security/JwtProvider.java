@@ -15,7 +15,7 @@ public class JwtProvider {
     private static final SecretKey CHAVE = Keys.hmacShaKeyFor(
             "MINHACHAVESECRETA_MINHACHAVESECRETA".getBytes(StandardCharsets.UTF_8));
 
-    static public String getToken(String usuario,String nivel)
+    static public String getToken(String nivel)
     {
         String jwtToken = Jwts.builder()
                 .setSubject("usuario")

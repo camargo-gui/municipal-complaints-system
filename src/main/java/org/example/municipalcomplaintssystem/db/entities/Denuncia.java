@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 public class Denuncia {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "den_id")
     private int id;
 
@@ -24,28 +25,27 @@ public class Denuncia {
     @Column(name = "den_data")
     private Timestamp data;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "org_id")
     private Orgao orgao;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tip_id")
     private Tipo tipoId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usu_id")
     private Usuario usuarioId;
 
     public Denuncia(){
-        this(0, "", "", 0, null, null, null, null);
+        this(0, "", "", 0, null, null, null);
     }
 
-    public Denuncia(int id, String titulo, String texto, int urgencia, Timestamp data, Orgao orgao, Tipo tipo, Usuario usuario){
+    public Denuncia(int id, String titulo, String texto, int urgencia, Orgao orgao, Tipo tipo, Usuario usuario){
         this.id = id;
         this.titulo = titulo;
         this.texto = texto;
         this.urgencia = urgencia;
-        this.data = data;
         this.orgao = orgao;
         this.tipoId = tipo;
         this.usuarioId = usuario;

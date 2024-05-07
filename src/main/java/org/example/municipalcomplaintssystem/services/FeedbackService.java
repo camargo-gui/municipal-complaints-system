@@ -16,4 +16,9 @@ public class FeedbackService {
     public List<Feedback> buscarTodos() {
         return this.repository.findAll();
     }
+
+    public void criar(Feedback feedback) {
+        this.repository.save(feedback);
+    }
 }
+

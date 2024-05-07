@@ -15,6 +15,6 @@ public class UsuarioController {
     @Autowired
     UsuarioService service;
 
-    @GetMapping("/")
+    @GetMapping()
     ResponseEntity<Object> getAll(){return ResponseEntity.ok(service.buscarTodos());}
 }

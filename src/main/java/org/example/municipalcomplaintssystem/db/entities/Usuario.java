@@ -36,7 +36,7 @@ public class Usuario {
     }
 
     public Usuario(int id){
-        this(id, "", "", "", "");
+        this(id, "", "", "", 0);
     }
 
     public int getId() {

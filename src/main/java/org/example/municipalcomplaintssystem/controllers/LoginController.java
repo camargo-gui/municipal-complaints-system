@@ -30,7 +30,7 @@ public class LoginController {
                 return ResponseEntity.badRequest().body(new ErrorResponse("Senha incorreta"));
             }
             String token = JwtProvider.getToken(String.valueOf(usuario.getNivel()));
-            LoginResponse response = new LoginResponse(body.getEmail(), token);
+            LoginResponse response = new LoginResponse(usuario.getNivel(), token);
             return ResponseEntity.ok().body(response.toJSON());
         } catch (Exception e) {
             System.out.println(e);

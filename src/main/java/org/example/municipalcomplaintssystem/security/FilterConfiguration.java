@@ -21,7 +21,7 @@ public class FilterConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/public/**", "/api/denuncia/", "/api/tipo/").permitAll()
-                        .requestMatchers("/api/orgao/**").hasAuthority("2")
+                        .requestMatchers("/api/orgao/**").hasAuthority("1")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // Adiciona o filtro manualmente

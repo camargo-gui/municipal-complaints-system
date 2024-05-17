@@ -26,6 +26,10 @@ public class DenunciaService {
         this.repository.deleteById(id);
     }
 
+    public List<Denuncia> findByUserId(Long id) {
+        return this.repository.findByUserId(id);
+    }
+
     public Optional<Denuncia> findById(Long id) {
         return this.repository.findById(id);
     }

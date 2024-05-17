@@ -31,11 +31,11 @@ public class Denuncia {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tip_id")
-    private Tipo tipoId;
+    private Tipo tipo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usu_id")
-    private Usuario usuarioId;
+    private Usuario usuario;
 
     public Denuncia(){
         this(0, "", "", 0, null, null, null);
@@ -47,8 +47,8 @@ public class Denuncia {
         this.texto = texto;
         this.urgencia = urgencia;
         this.orgao = orgao;
-        this.tipoId = tipo;
-        this.usuarioId = usuario;
+        this.tipo = tipo;
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -99,19 +99,19 @@ public class Denuncia {
         this.orgao = orgao;
     }
 
-    public Tipo getTipoId() {
-        return tipoId;
+    public Tipo getTipo() {
+        return tipo;
     }
 
-    public void setTipoId(Tipo tipoId) {
-        this.tipoId = tipoId;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 
-    public Usuario getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioId(Usuario usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

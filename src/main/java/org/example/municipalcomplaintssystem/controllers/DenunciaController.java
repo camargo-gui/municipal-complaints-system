@@ -28,6 +28,11 @@ public class DenunciaController {
     @Autowired
     UsuarioService usuarioService;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getByUserId(@PathVariable Long id) {
+        List<Denuncia> denuncia = service.findByUserId(id);
+        return ResponseEntity.ok(denuncia);
+    }
     @GetMapping()
     public ResponseEntity<Object> getAll() {
         List <Denuncia> denuncia = service.buscarTodos();
@@ -36,13 +41,13 @@ public class DenunciaController {
 
     @PostMapping()
     public ResponseEntity<Object> criar(@RequestBody Denuncia denuncia) {
-        Optional<Usuario> usuario = this.usuarioService.findById(Long.valueOf(denuncia.getUsuarioId().getId()));
-        Optional<Tipo> tipo = this.tipoService.findById(Long.valueOf(denuncia.getTipoId().getId()));
+        Optional<Usuario> usuario = this.usuarioService.findById(Long.valueOf(denuncia.getUsuario().getId()));
+        Optional<Tipo> tipo = this.tipoService.findById(Long.valueOf(denuncia.getTipo().getId()));
         Optional<Orgao> orgao = this.orgaoService.findById(Long.valueOf(denuncia.getOrgao().getId()));
 
         denuncia.setOrgao(orgao.get());
-        denuncia.setUsuarioId(usuario.get());
-        denuncia.setTipoId(tipo.get());
+        denuncia.setUsuario(usuario.get());
+        denuncia.setTipo(tipo.get());
 
         this.service.criar(denuncia);
 

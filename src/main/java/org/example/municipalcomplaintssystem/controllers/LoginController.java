@@ -29,7 +29,7 @@ public class LoginController {
             if (!usuario.getSenha().trim().equals(body.getSenha())) {
                 return ResponseEntity.badRequest().body(new ErrorResponse("Senha incorreta"));
             }
-            String token = JwtProvider.getToken(String.valueOf(usuario.getNivel()));
+            String token = JwtProvider.getToken(String.valueOf(usuario.getNivel()), String.valueOf(usuario.getId()));
             LoginResponse response = new LoginResponse(usuario.getNivel(), token);
             return ResponseEntity.ok().body(response.toJSON());
         } catch (Exception e) {

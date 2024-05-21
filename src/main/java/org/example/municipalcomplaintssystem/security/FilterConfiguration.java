@@ -20,7 +20,7 @@ public class FilterConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/public/**", "/api/denuncia/", "/api/tipo/").permitAll()
+                        .requestMatchers("/login", "/public/**", "/api/denuncia/", "/api/tipo/", "/api/usuario").permitAll()
                         .requestMatchers("/api/orgao/**").hasAuthority("1")
                         .anyRequest().authenticated()
                 )

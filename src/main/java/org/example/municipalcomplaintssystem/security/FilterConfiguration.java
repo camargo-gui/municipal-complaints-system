@@ -20,8 +20,8 @@ public class FilterConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/public/**", "/api/denuncia/", "/api/tipo/", "/api/usuario").permitAll()
-                        .requestMatchers("/api/orgao/**").hasAuthority("1")
+                        .requestMatchers("/login", "/api/public/**").permitAll()
+                        .requestMatchers("/api/admin/**", "/api/admin/**/**").hasAuthority("1")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // Adiciona o filtro manualmente

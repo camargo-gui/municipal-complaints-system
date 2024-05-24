@@ -1,4 +1,4 @@
-package org.example.municipalcomplaintssystem.controllers;
+package org.example.municipalcomplaintssystem.controllers.publico;
 
 import org.example.municipalcomplaintssystem.db.entities.Denuncia;
 import org.example.municipalcomplaintssystem.db.entities.Feedback;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/feedback")
+@RequestMapping("api/public/feedback")
 public class FeedbackController {
 
     @Autowired
@@ -25,13 +25,9 @@ public class FeedbackController {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
-    @PostMapping
-    public ResponseEntity<Object> criar(@RequestBody Feedback feedback) {
-        Optional<Denuncia> denuncia = this.denunciaService.findById(Long.valueOf(feedback.getDenuncia().getId()));
-        feedback.setDenuncia(denuncia.get());
-
-        this.service.criar(feedback);
-
-        return ResponseEntity.ok().body("{\"message\":\"Feedback adicionado com sucesso\"}");
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getById(@PathVariable Long id) {
+        Optional<Feedback> feedback = Optional.ofNullable(this.service.buscarPorIdDenuncia(id));
+        return ResponseEntity.ok(feedback);
     }
 }

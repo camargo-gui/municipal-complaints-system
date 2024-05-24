@@ -17,8 +17,16 @@ public class FeedbackService {
         return this.repository.findAll();
     }
 
-    public void criar(Feedback feedback) {
+    public Feedback buscarPorIdDenuncia(Long id) {
+        return this.repository.findByIdDenuncia(id);
+    }
+
+    public void salvar(Feedback feedback) {
         this.repository.save(feedback);
+    }
+
+    public void deletar(int id) {
+        this.repository.deleteById((long) id);
     }
 }
 

@@ -1,4 +1,4 @@
-package org.example.municipalcomplaintssystem.controllers;
+package org.example.municipalcomplaintssystem.controllers.publico;
 
 import org.example.municipalcomplaintssystem.controllers.response.ErrorResponse;
 import org.example.municipalcomplaintssystem.controllers.response.LoginResponse;

@@ -1,13 +1,7 @@
-package org.example.municipalcomplaintssystem.controllers;
+package org.example.municipalcomplaintssystem.controllers.publico;
 
-import org.example.municipalcomplaintssystem.db.entities.Denuncia;
-import org.example.municipalcomplaintssystem.db.entities.Orgao;
-import org.example.municipalcomplaintssystem.db.entities.Tipo;
-import org.example.municipalcomplaintssystem.db.entities.Usuario;
-import org.example.municipalcomplaintssystem.services.DenunciaService;
-import org.example.municipalcomplaintssystem.services.OrgaoService;
-import org.example.municipalcomplaintssystem.services.TipoService;
-import org.example.municipalcomplaintssystem.services.UsuarioService;
+import org.example.municipalcomplaintssystem.db.entities.*;
+import org.example.municipalcomplaintssystem.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/denuncia")
+@RequestMapping("api/public/denuncia")
 public class DenunciaController {
 
     @Autowired
@@ -27,15 +21,12 @@ public class DenunciaController {
     TipoService tipoService;
     @Autowired
     UsuarioService usuarioService;
+    @Autowired
+    FeedbackService feedbackService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getByUserId(@PathVariable Long id) {
         List<Denuncia> denuncia = service.findByUserId(id);
-        return ResponseEntity.ok(denuncia);
-    }
-    @GetMapping()
-    public ResponseEntity<Object> getAll() {
-        List <Denuncia> denuncia = service.buscarTodos();
         return ResponseEntity.ok(denuncia);
     }
 
@@ -56,6 +47,8 @@ public class DenunciaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletar(@PathVariable Long id) {
+        Optional<Feedback> feedback = Optional.ofNullable(this.feedbackService.buscarPorIdDenuncia(id));
+        feedback.ifPresent(value -> this.feedbackService.deletar((value.getId())));
         service.deletar(id);
         return ResponseEntity.ok().body("{\"message\":\"Denúncia deletada com sucesso\"}");
     }

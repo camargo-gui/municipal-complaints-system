@@ -30,6 +30,14 @@ public class DenunciaService {
         return this.repository.findByUserId(id);
     }
 
+    public List<Denuncia> findByOrgaoId(Long id) {
+        return this.repository.findByOrgaoId(id);
+    }
+
+    public List<Denuncia> findByTipoId(Long id) {
+        return this.repository.findByTipoId(id);
+    }
+
     public Optional<Denuncia> findById(Long id) {
         return this.repository.findById(id);
     }

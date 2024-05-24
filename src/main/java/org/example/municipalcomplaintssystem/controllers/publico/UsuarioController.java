@@ -1,4 +1,4 @@
-package org.example.municipalcomplaintssystem.controllers;
+package org.example.municipalcomplaintssystem.controllers.publico;
 
 
 import org.example.municipalcomplaintssystem.db.entities.Usuario;
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("/api/public/usuario")
 public class UsuarioController {
 
     @Autowired
